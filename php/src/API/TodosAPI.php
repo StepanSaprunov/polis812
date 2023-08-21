@@ -40,4 +40,21 @@ class TodosAPI
             return null;
         }
     }
+
+    /**
+     * @return Todo[]|null
+     */
+    static function getTodosByUserId(int $id) {
+        try {
+            $client = new Client();
+            $response = $client->get(UsersAPI::UsersRoute . "/${id}/todos");
+            $body = json_decode($response->getBody(), true);
+            $todos = array_map(function(array $todo) {
+                return new Todo($todo);
+            }, $body);
+            return $todos;
+        } catch (\Throwable $th) {
+            return null;
+        }
+    }
 }
