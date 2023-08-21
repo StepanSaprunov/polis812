@@ -40,4 +40,21 @@ class PostsAPI
             return null;
         }
     }
+
+    /**
+     * @return Post[]|null
+     */
+    static function getPostsByUserId(int $id) {
+        try {
+            $client = new Client();
+            $response = $client->get(UsersAPI::UsersRoute . "/${id}/posts");
+            $body = json_decode($response->getBody(), true);
+            $posts = array_map(function(array $post) {
+                return new Post($post);
+            }, $body);
+            return $posts;
+        } catch (\Throwable $th) {
+            return null;
+        }
+    }
 }
