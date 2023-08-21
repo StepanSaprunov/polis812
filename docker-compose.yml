@@ -1,0 +1,21 @@
+version: '3'
+services:
+  php:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./php
+    volumes:
+      - "./php/:/var/www/html"
+      - "./php-ini:/usr/local/etc/php/custom.d"
+    environment:
+      PHP_INI_SCAN_DIR: "/usr/local/etc/php/conf.d:/usr/local/etc/php/custom.d"
+
+    ports:
+      - 8000:80
+    networks:
+      - polis-test
+    container_name: polis-php
+
+networks:
+  polis-test:
+    driver: bridge
