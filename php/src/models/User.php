@@ -1,7 +1,7 @@
 <?php
 class User
 {
-    public int $id;
+    public $id;
     public $name;
     public $username;
     public $email;
