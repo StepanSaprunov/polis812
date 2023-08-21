@@ -11,7 +11,7 @@ class TodosAPI
     /**
      * @return Todo[]|null
      */
-    static function getPosts() {
+    static function getTodos() {
         try {
             $client = new Client();
             $response = $client->get(TodosAPI::TodosRoute);
@@ -29,7 +29,7 @@ class TodosAPI
     /**
      * @return Todo|null
      */
-    static function getPostById(int $id) {
+    static function getTodoById(int $id) {
         try {
             $client = new Client();
             $response = $client->get(TodosAPI::TodosRoute . "/${id}");

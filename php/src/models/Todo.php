@@ -2,10 +2,10 @@
 
 class Todo
 {
-    public int $userId;
-    public int $id;
-    public string $title;
-    public bool $completed;
+    public $userId;
+    public $id;
+    public $title;
+    public $completed;
 
     function __construct(array $post)
     {
